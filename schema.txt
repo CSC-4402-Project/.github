@@ -1,0 +1,69 @@
+-- schema.sql
+
+
+-- Create Customer table
+CREATE TABLE Customer (
+	CustomerID INT PRIMARY KEY AUTO_INCREMENT,
+	FirstName VARCHAR(50),
+	LastName VARCHAR(50),
+	Email VARCHAR(100) UNIQUE,
+	Phone VARCHAR(15),
+);
+
+-- Create Supplier table
+CREATE TABLE Suppliers  (
+	SupplierID INT PRIMARY KEY AUTO_INCREMENT,
+	Name VARCHAR(100),
+	ContactName VARCHAR(50),
+	Phone VARCHAR(15),
+	Email VARCHAR(100),
+);
+
+-- Create Departments table
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50),
+    Description VARCHAR(255)
+);
+
+-- Create Products table
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100),
+    Price DECIMAL(10, 2),
+    Stock INT,
+    SupplierID INT,
+    DepartmentID INT,
+    FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID),
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+-- Create Employees table
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY AUTO_INCREMENT,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Position VARCHAR(50),
+    Salary DECIMAL(10, 2),
+    HireDate DATE
+);
+
+-- Create Orders table
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY AUTO_INCREMENT,
+    CustomerID INT,
+    OrderDate DATE,
+    TotalAmount DECIMAL(10, 2),
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+-- Create OrderDetails table
+CREATE TABLE OrderDetails (
+    OrderDetailID INT PRIMARY KEY AUTO_INCREMENT,
+    OrderID INT,
+    ProductID INT,
+    Quantity INT,
+    LineTotal DECIMAL(10, 2),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+);
