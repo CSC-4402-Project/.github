@@ -1,0 +1,36 @@
+-- populate.sql
+
+-- Populate Customers
+INSERT INTO Customers (FirstName, LastName, Email, Phone, Address)
+VALUES
+();
+
+-- Populate Suppliers
+INSERT INTO Suppliers (Name, ContactName, Phone, Email, Address)
+VALUES
+();
+
+-- Populate Departments
+INSERT INTO Departments (Name, Description)
+VALUES
+();
+
+-- Populate Products
+INSERT INTO Products (Name, Price, Stock, SupplierID, DepartmentID)
+VALUES
+();
+
+-- Populate Employees
+INSERT INTO Employees (FirstName, LastName, Position, Salary, HireDate)
+VALUES
+();
+
+-- Populate Orders
+INSERT INTO Orders (CustomerID, OrderDate, TotalAmount)
+VALUES
+();
+
+-- Populate OrderDetails
+INSERT INTO OrderDetails (OrderID, ProductID, Quantity, LineTotal)
+VALUES
+();
